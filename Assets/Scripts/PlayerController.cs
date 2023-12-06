@@ -182,6 +182,13 @@ namespace Percy
             if (_stats == null) Debug.LogWarning("Please assign a ScriptableStats asset to the Player Controller's Stats slot", this);
         }
 #endif
+
+        public void Die()
+        {
+
+            Debug.Log("Player died");
+
+        }
     }
 
     public struct FrameInput

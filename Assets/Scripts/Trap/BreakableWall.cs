@@ -7,6 +7,7 @@ public class BreakableWall : MonoBehaviour
     [SerializeField] private float fallDelay = 1f;
     [SerializeField] private float respawnDelay = 2f;
     [SerializeField] private bool _breakBySpike = false;
+   
     private Vector3 originPos;
     private bool falling = false;
 
@@ -28,16 +29,16 @@ public class BreakableWall : MonoBehaviour
             return;
 
         // If the player landed on the platform, start falling
-        if (collision.gameObject.CompareTag("Player") && !_breakBySpike)
-        {
-            StartCoroutine(StartFall());
-        }
-       if (collision.gameObject.GetComponent<Spike>())
+        if ((collision.gameObject.CompareTag("Player") && !_breakBySpike))
         {
             StartCoroutine(StartFall());
         }
     }
 
+    public void Break()
+    {
+        StartCoroutine(StartFall());
+    }
     private IEnumerator StartFall()
     {
         falling = true;

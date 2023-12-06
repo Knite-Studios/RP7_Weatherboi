@@ -8,7 +8,7 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Example: Trigger shooting with Space key (you can change this condition)
+        if (Input.GetKeyDown(KeyCode.L)) // Example: Trigger shooting with Space key (you can change this condition)
         {
             ShootSpike();
         }
@@ -16,12 +16,8 @@ public class Turret : MonoBehaviour
 
     void ShootSpike()
     {
-        GameObject newSpike = Instantiate(spikePrefab, spawnPoint.position, spawnPoint.rotation);
-        Rigidbody2D spikeRB = newSpike.GetComponent<Rigidbody2D>();// Get the Rigidbody component from the spike
-
-        if (spikeRB != null)
-        {
-            spikeRB.AddForce(spawnPoint.up * shootForce, ForceMode2D.Impulse); // Use 'up' for 2D force direction
-        }
+        GameObject newSpike = Instantiate(spikePrefab, spawnPoint.position, spawnPoint.rotation); 
+        Rigidbody2D rb = newSpike.GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component from the new spike
+        rb.AddForce(spawnPoint.up * shootForce, ForceMode2D.Impulse); // Add force to the Rigidbody2D component
     }
 }
