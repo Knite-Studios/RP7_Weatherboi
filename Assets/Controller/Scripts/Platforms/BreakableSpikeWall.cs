@@ -1,37 +1,39 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class BreakingPlatform : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
+public class BreakableSpikeWall : MonoBehaviour
 {
     [SerializeField] private float fallDelay = 1f;
     [SerializeField] private float respawnDelay = 2f;
+    [SerializeField] private bool _breakByPlayer = false;
 
     private Vector3 originPos;
     private bool falling = false;
 
     private Rigidbody2D rb;
-    private BoxCollider2D col;
+    private Collider2D col;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<BoxCollider2D>();
+        col = GetComponent<Collider2D>();
         rb.bodyType = RigidbodyType2D.Static;
         originPos = transform.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // Avoid calling the coroutine multiple times if it's already been called (falling)
         if (falling)
             return;
 
         // If the player landed on the platform, start falling
-        if ((collision.gameObject.CompareTag("Player")))
+        if ((collision.gameObject.CompareTag("Player") && _breakByPlayer) || collision.gameObject.GetComponent<Spike>())
         {
             StartCoroutine(StartFall());
         }
+
     }
 
     public void Break()
@@ -60,4 +62,3 @@ public class BreakingPlatform : MonoBehaviour
         falling = false;
     }
 }
-

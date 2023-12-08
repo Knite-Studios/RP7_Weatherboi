@@ -39,8 +39,8 @@ namespace Weather
         {
             return new FrameInput
             {
-                JumpDown = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C),
-                JumpHeld = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.C),
+                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
                 DashDown = Input.GetKeyDown(KeyCode.LeftShift) || Input.GetMouseButtonDown(1),
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };

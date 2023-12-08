@@ -1,19 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
     public bool canPause = true;
-    // Start is called before the first frame update
+
+    int keyscollected = 0;
+    public int KeysNeeded = 3;
+
+    public UnityEvent OpenExit;
+    bool isOpen = false;
+
     void Start()
     {
-        
+      
     }
-
-    // Update is called once per frame
+    public void CollectedKey()
+    {
+        keyscollected++;
+    }
+    void CheckKeys()
+    {
+        if ((keyscollected == KeysNeeded || Input.GetKeyDown(KeyCode.P)) && !isOpen)
+        {
+            isOpen = true;
+            OpenExit.Invoke();
+            
+        }
+    }
     void Update()
     {
-        
+        CheckKeys();   
     }
 }

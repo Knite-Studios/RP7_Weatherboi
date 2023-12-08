@@ -13,6 +13,12 @@ public class HealthBar : MonoBehaviour
     private void Start()
     {
         //SetMaxHealth();
+        SetMaxHealth((int)SeasonManager.Instance.seasonDuration);
+    }
+    private void Update()
+    {
+        SetHealth((int)SeasonManager.Instance.duration);
+
     }
     private void SetMaxHealth(int maxHealth)
     {
