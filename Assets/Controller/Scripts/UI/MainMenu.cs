@@ -9,23 +9,17 @@ public class MainMenu : Singleton<MainMenu>
     [SerializeField]
     private AudioClip _menuClip;
     [SerializeField]
-    private GameObject muteIcon;
-    [SerializeField]
-    private GameObject settings;
+    private GameObject _teamScreen;
     [SerializeField]
     private string sceneName = "03_Loading";
-    private bool isMuted = false;
-    private bool settingIsOn = false;
+    private bool _teamScreenOn = false;
 
     private AudioSource _menuSpeaker;
 
     private void Awake()
-    {  
+    {
 
-        muteIcon.SetActive(isMuted);
-
-        settings.SetActive(false);
-        muteIcon.SetActive(isMuted);
+        _teamScreen.SetActive(false);
 
         _menuSpeaker = GetComponent<AudioSource>();
         _menuSpeaker.loop = true;
@@ -45,17 +39,10 @@ public class MainMenu : Singleton<MainMenu>
             _menuSpeaker.Play();
         }
     }
-    public void ToggleSettings()
+    public void ToggleTeamScreen()
     {
-        settingIsOn = !settingIsOn;
-        settings.SetActive(settingIsOn);
-    }
-    public void ToggleMute()
-    {
-
-        isMuted = !isMuted;
-        muteIcon.SetActive(isMuted);
-        _menuSpeaker.mute = isMuted;
+        _teamScreenOn = !_teamScreenOn;
+        _teamScreen.SetActive(_teamScreenOn);
     }
     public void Play()
     {

@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Color High;
 
     public Slider slider;
+    float velocity = 0.0f;
     
     private void Start()
     {
@@ -28,7 +29,15 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        slider.value = health;
+        float currentScore;
+        if (health < slider.value)
+        {
+             currentScore = Mathf.SmoothDamp(slider.value, health, ref velocity, 300 * Time.deltaTime);
+        }else
+        {
+             currentScore = Mathf.SmoothDamp(slider.value, health, ref velocity, 50 * Time.deltaTime);
+        }
+        slider.value = currentScore;
         GetComponentInChildren<Image>().color = Color.Lerp(Low, High, slider.normalizedValue);
     }
 }

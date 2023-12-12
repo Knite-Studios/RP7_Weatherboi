@@ -3,14 +3,11 @@ using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
+[RequireComponent(typeof(AudioSource))]
 public class PauseMenu : Singleton<PauseMenu>
 {
     [SerializeField]
     private GameObject pauseMenu;
-    [SerializeField]
-    private GameObject muteIcon;
-
     [Header("QUITING"),SerializeField]
     private string QuitTo = "03_Loading";
 
@@ -30,15 +27,16 @@ public class PauseMenu : Singleton<PauseMenu>
     void Pause()
     {
         Time.timeScale = 0;
+        ToggleMute();
         pauseMenu.SetActive(true);
         paused = true;
-        muteIcon.SetActive(isMuted);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
     public void Resume()
     {
         Time.timeScale = 1f;
+        ToggleMute();
         pauseMenu.SetActive(false);
         paused = false;
 
@@ -62,7 +60,6 @@ public class PauseMenu : Singleton<PauseMenu>
     {
 
         isMuted = !isMuted;
-        muteIcon.SetActive(isMuted);
         _menuSpeaker.mute = isMuted;
     }
 

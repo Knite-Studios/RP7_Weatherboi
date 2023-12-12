@@ -13,7 +13,9 @@ public class SplashScreen : MonoBehaviour
 
     IEnumerator LoadSceneAfterFade()
     {
+        if (fadeAnimator != null)
         fadeAnimator.SetTrigger("Start"); // Assuming "Start" is the trigger for your animation
+
         yield return new WaitForSeconds(fadeDuration);
         SceneManager.LoadScene(sceneName);
     }
