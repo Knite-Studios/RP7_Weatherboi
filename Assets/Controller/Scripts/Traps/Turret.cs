@@ -9,10 +9,20 @@ public class Turret : MonoBehaviour
     [SerializeField]
     Transform spawnPoint; // Point where spikes will spawn
 
+    float time;
+    [SerializeField]
+    float interval = 10f;
+
+    private void Start()
+    {
+        time = 0;
+    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) 
+        time += Time.deltaTime;
+        if (time >= interval) 
         {
+            time = 0;
             ShootSpike();
         }
     }

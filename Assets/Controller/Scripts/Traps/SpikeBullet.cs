@@ -17,8 +17,9 @@ public class SpikeBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<BreakableSpikeWall>())
+        if (collision.TryGetComponent(out BreakableSpikeWall wall))
         {
+            wall.Break();
             Destroy(gameObject);
         }
     }

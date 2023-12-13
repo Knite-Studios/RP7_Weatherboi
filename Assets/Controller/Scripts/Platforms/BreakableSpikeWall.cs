@@ -24,6 +24,7 @@ public class BreakableSpikeWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision");
         // Avoid calling the coroutine multiple times if it's already been called (falling)
         if (falling)
             return;
