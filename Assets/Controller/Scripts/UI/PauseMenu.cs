@@ -8,23 +8,20 @@ public class PauseMenu : Singleton<PauseMenu>
 {
     [SerializeField]
     private GameObject pauseMenu;
-    [Header("QUITING"),SerializeField]
-    private string QuitTo = "03_Loading";
-
     private bool isMuted = false;
 
     AudioSource _menuSpeaker;
     private void Awake()
     {
-       
+
         pauseMenu.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-       _menuSpeaker = GetComponent<AudioSource>();
+        _menuSpeaker = GetComponent<AudioSource>();
     }
     private bool paused = false;
-    void Pause()
+    public void Pause()
     {
         Time.timeScale = 0;
         ToggleMute();
@@ -48,13 +45,16 @@ public class PauseMenu : Singleton<PauseMenu>
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
+
     }
-    
+
     public void QuitGame()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(QuitTo);
+         #if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+        #endif
+        Application.Quit();
+
     }
     public void ToggleMute()
     {
