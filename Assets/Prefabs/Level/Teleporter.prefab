@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _teleportPosition: {x: 1.27, y: 34.23}
   _teleportOutClip: {fileID: 8300000, guid: 3561af2d278c31f4eb17ec278c2b8de8, type: 3}
-  _teleportInClip: {fileID: 8300000, guid: 2383091dc0a3a764a8c78b106fab766c, type: 3}
+  _teleportInClip: {fileID: 8300000, guid: ae13517509f9c924a83d4247148e8475, type: 3}
   _teleportParticlePrefab: {fileID: 313061834581851932, guid: fae34a622ae77c14a8df46c130f85019,
     type: 3}
   _teleportDelay: 0.5
