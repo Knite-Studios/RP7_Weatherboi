@@ -9,6 +9,7 @@ public class SeasonManager : Singleton<SeasonManager>
 
     [Header("Season Timer"), SerializeField]
     public float seasonDuration = 10f;
+    [SerializeField]
     float seasonCoolDown = 10f;
 
     public event Action<Season> OnSeasonChange;

@@ -11,9 +11,10 @@ public class Spike : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerHealth playerHealth))
+        if (collision.GetComponent<PlayerHealth>())
         {
-            playerHealth.Die();
+            collision.GetComponent<PlayerHealth>().Die();
         }
+      
     }
 }
