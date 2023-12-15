@@ -28,6 +28,7 @@ public class LoadingScreen : MonoBehaviour
         while(progress < 1f)
         {
             progress += fakeLoadingSpeed * Time.deltaTime;
+            if(loadingSlider != null)
             loadingSlider.value = progress;
             yield return null;
         }

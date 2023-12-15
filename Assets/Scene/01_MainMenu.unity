@@ -869,9 +869,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41789891d6e805b44ba5c2e968aff1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuClip: {fileID: 0}
+  _menuClip: {fileID: 8300000, guid: 9965d79b4a943534f854aa7b449148a0, type: 3}
   _teamScreen: {fileID: 406834761}
-  sceneName: Gym
+  sceneName: 02_Loading
 --- !u!82 &1215149738
 AudioSource:
   m_ObjectHideFlags: 0
