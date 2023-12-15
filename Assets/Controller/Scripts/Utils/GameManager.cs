@@ -6,7 +6,7 @@ public class GameManager : Singleton<GameManager>
     public bool canPause = true;
     public GameObject winScreen;
 
-    int keyscollected = 0;
+    int keyscollected ;
     public int KeysNeeded = 3;
 
     public UnityEvent OpenExit;
@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         _menuSpeaker.clip = GameMusic;
         _menuSpeaker.loop = true;
         _menuSpeaker.Play();
+        keyscollected = 0;
     }
     public void CollectedKey()
     {
@@ -33,7 +34,7 @@ public class GameManager : Singleton<GameManager>
     }
     void CheckKeys()
     {
-        if ((keyscollected == KeysNeeded || Input.GetKeyDown(KeyCode.P)) && !isOpen)
+        if (keyscollected == KeysNeeded  && !isOpen)
         {
             isOpen = true;
             OpenExit.Invoke();
